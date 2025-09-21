@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aquaveda Design System - Water Sustainability Theme */
+
+@layer base {
+  :root {
+    /* Eco Water Theme - Ocean to Forest Gradient Palette */
+    --background: 195 100% 98%;
+    --foreground: 196 30% 15%;
+
+    --card: 195 50% 97%;
+    --card-foreground: 196 30% 15%;
+
+    --popover: 195 100% 98%;
+    --popover-foreground: 196 30% 15%;
+
+    /* Ocean Blue Primary */
+    --primary: 196 85% 35%;
+    --primary-foreground: 195 100% 98%;
+
+    /* Aqua Secondary */
+    --secondary: 175 60% 88%;
+    --secondary-foreground: 196 30% 15%;
+
+    /* Soft Muted Tones */
+    --muted: 185 45% 92%;
+    --muted-foreground: 196 20% 45%;
+
+    /* Forest Green Accent */
+    --accent: 155 70% 45%;
+    --accent-foreground: 195 100% 98%;
+
+    /* Eco Destructive */
+    --destructive: 15 85% 55%;
+    --destructive-foreground: 195 100% 98%;
+
+    /* Subtle Borders */
+    --border: 185 30% 85%;
+    --input: 185 30% 90%;
+    --ring: 196 85% 35%;
+
+    --radius: 0.75rem;
+
+    /* Custom Eco Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(196 85% 35%), hsl(175 70% 45%));
+    --gradient-forest: linear-gradient(135deg, hsl(155 70% 45%), hsl(125 60% 35%));
+    --gradient-aqua: linear-gradient(180deg, hsl(195 100% 98%), hsl(185 45% 92%));
+    --gradient-hero: linear-gradient(135deg, hsl(196 85% 35%) 0%, hsl(175 70% 45%) 50%, hsl(155 70% 45%) 100%);
+    
+    /* Water Ripple Animation */
+    --ripple-shadow: 0 0 20px hsl(196 85% 35% / 0.3);
+    --wave-shadow: 0 8px 32px hsl(196 85% 35% / 0.15);
+    
+    /* Smooth Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-accent text-white font-semibold px-8 py-4 rounded-xl shadow-[var(--wave-shadow)] transition-[var(--transition-smooth)] hover:shadow-[var(--ripple-shadow)] hover:scale-105;
+  }
+  
+  .btn-hero-outline {
+    @apply border-2 border-primary text-primary font-semibold px-8 py-4 rounded-xl bg-white/90 backdrop-blur-sm transition-[var(--transition-smooth)] hover:bg-primary hover:text-white hover:shadow-[var(--ripple-shadow)];
+  }
+  
+  /* Category Cards */
+  .category-card {
+    @apply bg-card border border-border rounded-2xl p-6 transition-[var(--transition-smooth)] hover:shadow-[var(--wave-shadow)] hover:-translate-y-1 cursor-pointer;
+  }
+  
+  /* Water Ripple Animation */
+  .water-ripple {
+    @apply relative overflow-hidden;
+  }
+  
+  .water-ripple::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: radial-gradient(circle at center, hsl(196 85% 35% / 0.1) 0%, transparent 70%);
+  }
+  
+  .water-ripple:hover::before {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  /* Custom Gradient Backgrounds */
+  .bg-gradient-ocean {
+    background: var(--gradient-ocean);
+  }
+  
+  .bg-gradient-forest {
+    background: var(--gradient-forest);
+  }
+  
+  .bg-gradient-aqua {
+    background: var(--gradient-aqua);
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  /* Water Wave Animation */
+  @keyframes wave {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+  }
+  
+  .animate-wave {
+    animation: wave 3s ease-in-out infinite;
+  }
+  
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
